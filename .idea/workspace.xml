@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="92a895f9-6463-4e1a-a90a-1f3de27069d6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/watchlist/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/watchlist/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/watchlist/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/watchlist/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/watchlist/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/watchlist/templates/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="92a895f9-6463-4e1a-a90a-1f3de27069d6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
