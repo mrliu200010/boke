@@ -1,30 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>{{ movies|length }} Titles</p>
+<p>{{ Ariticles|length }} Titles</p>
 {# 表单 #}
 {% if current_user.is_authenticated %}
 <form method="POST">
-    电影名 <input type="text" name="title" autocomplete="off" required>
-    年份 <input type="text" name="year" autocomplete="off" required>
-    <input type="submit" class="btn" name="submit" value="添加">
+    <a href="{{ url_for('add') }}"><input type="submit" class="btn" name="submit" value="添加"></a>
 </form>
 {% endif %}
 <ul class="movie-list">
-    {% for movie in movies %}
+    <li>标题&emsp;-&emsp;作者&emsp;-&emsp;时间&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;操作</li>
+    {% for ariticle in Ariticles %}
     <li>
-        {{ movie.title }} - {{ movie.year }}
+        {{ ariticle.title }} &nbsp;-&nbsp; {{ ariticle.author }}&nbsp; -&nbsp; {{ ariticle.pubdate }}
+{#    - {{ ariticle.content }} #}
+{#        <span class="float-right">#}
+{#            <a class="vbd"#}
+{#                href="http://v.baidu.com/v?word={{ ariticle.title }}&ct=301989888&rn=67&pn=0&db=0&s=0&fbl=800&ie=utf-8&oq=nnkd&f=3&rsp=0"#}
+{#                target="_blank" title="在百度视频中查找此电影">百度视频</a>#}
+{#        </span>#}
         <span class="float-right">
-            <a class="vbd"
-                href="http://v.baidu.com/v?word={{ movie.title }}&ct=301989888&rn=67&pn=0&db=0&s=0&fbl=800&ie=utf-8&oq=nnkd&f=3&rsp=0"
-                target="_blank" title="在百度视频中查找此电影">百度视频</a>
+            <a class="btn" href="{{ url_for('check',articles_id=ariticle.id) }}">查看博文</a>
         </span>
         {% if current_user.is_authenticated %}
         <span class="float-right">
-            <a class="btn" href="{{ url_for('edit',movie_id=movie.id) }}">编辑</a>
+            <a class="btn" href="{{ url_for('edit',articles_id=ariticle.id) }}">编辑</a>
         </span>
+
         <span class="float-right">
-            <form class="inline-form" action="{{ url_for('delete',movie_id=movie.id) }}" method="post">
+            <form class="inline-form" action="{{ url_for('delete',articles_id=ariticle.id) }}" method="post">
                 <input class="btn" type="submit" name='delete' value="删除" onclick="return confirm('确定删除吗？')">
             </form>
         </span>

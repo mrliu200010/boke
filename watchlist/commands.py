@@ -1,6 +1,6 @@
 import click
 from watchlist import app,db
-from watchlist.models import User,Movie
+from watchlist.models import User,Movie,Ariticles
 # 自定义initdb
 @app.cli.command()
 @click.option('--drop',is_flag=True,help='删除之后再创建')
@@ -14,7 +14,7 @@ def initdb(drop):
 @app.cli.command()
 def forge():
     db.create_all()
-    name = "Bruce"
+    name = "mrliu"
     movies = [
         {'title':'杀破狼','year':'2003'},
         {'title':'扫毒','year':'2018'},
@@ -35,6 +35,31 @@ def forge():
     db.session.commit()
     click.echo('数据导入完成')
 
+#
+@app.cli.command()
+def article_():
+    db.create_all()
+    name = "mrliu"
+    articles = [
+        {'title':'杀破狼','content':'2003','pubdate':'2000'},
+        {'title':'扫毒','content':'2018','pubdate':'2000'},
+        {'title':'捉妖记','content':'2016','pubdate':'2000'},
+        {'title':'囧妈','content':'2020','pubdate':'2000'},
+        {'title':'葫芦娃','content':'1989','pubdate':'2000'},
+        {'title':'玻璃盒子','content':'2020','pubdate':'2000'},
+        {'title':'调酒师','content':'2020','pubdate':'2000'},
+        {'title':'釜山行','content':'2017','pubdate':'2000'},
+        {'title':'导火索','content':'2005','pubdate':'2000'},
+        {'title':'叶问','content':'2015','pubdate':'2000'}
+    ]
+    user = User(name=name)
+    db.session.add(user)
+    for a in articles:
+        article = Ariticles(title=a['title'], content=a['content'],author='mrliu',pubdate=a['pubdate'])
+        db.session.add(article)
+    db.session.commit()
+    click.echo('数据导入完成')
+
 # 生成admin账号的函数
 @app.cli.command()
 @click.option('--username',prompt=True,help="用来登录的用户名")
@@ -48,9 +73,35 @@ def admin(username,password):
         user.set_password(password)
     else:
         click.echo('创建用户')
-        user = User(username=username,name="雷洛")
+        user = User(username=username,name="admin")
         user.set_password(password)
         db.session.add(user)
     
     db.session.commit()
     click.echo('创建管理员账号完成')
+
+
+#
+@app.cli.command()
+def Article():
+    db.create_all()
+    name = "mrliu"
+    articles = [
+        {'title':'杀破狼','content':'2003','pubdate':'2000'},
+        {'title':'扫毒','year':'2018','pubdate':'2000'},
+        {'title':'捉妖记','year':'2016','pubdate':'2000'},
+        {'title':'囧妈','year':'2020','pubdate':'2000'},
+        {'title':'葫芦娃','year':'1989','pubdate':'2000'},
+        {'title':'玻璃盒子','year':'2020','pubdate':'2000'},
+        {'title':'调酒师','year':'2020','pubdate':'2000'},
+        {'title':'釜山行','year':'2017','pubdate':'2000'},
+        {'title':'导火索','year':'2005','pubdate':'2000'},
+        {'title':'叶问','year':'2015','pubdate':'2000'}
+    ]
+    user = User(name=name)
+    db.session.add(user)
+    for a in articles:
+        article = Ariticles(title=a['title'], content=a['year'],author='mrliu',pubdate=a['pubdate'])
+        db.session.add(article)
+    db.session.commit()
+    click.echo('数据导入完成')

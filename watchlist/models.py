@@ -2,6 +2,7 @@ from watchlist import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 
+
 # 创建数据库模型类
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True) # 主键
@@ -18,3 +19,11 @@ class Movie(db.Model):
     id = db.Column(db.Integer,primary_key=True) # 主键
     title = db.Column(db.String(60))
     year = db.Column(db.String(4))
+
+
+class Ariticles(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # 主键
+    title = db.Column(db.String(20)) #博文名称
+    content = db.Column(db.String(2000)) #博文
+    author = db.Column(db.String(10)) #作者
+    pubdate = db.Column(db.String(20)) #发布时间

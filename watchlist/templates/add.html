@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3>博文添加页面</h3>
+    <form method="POST">
+        博文名： <input type="text" name="title" autocomplete="off" >
+        作者：<input type="text" name="author" autocomplete="off" value="mrliu" >
+        时间：<input type="text" name="pubdate" autocomplete="off" > <br> <br> <br> <br> <br>
+        内容：<input type="text" name="content" autocomplete="off" id="content" > <br>
+        <input type="submit" class="btn" name="submit" value="添加">
+    </form>
+{% endblock %}
