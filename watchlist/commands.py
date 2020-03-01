@@ -37,7 +37,7 @@ def forge():
 
 #
 @app.cli.command()
-def article_():
+def aaa():
     db.create_all()
     name = "mrliu"
     articles = [
@@ -81,27 +81,3 @@ def admin(username,password):
     click.echo('创建管理员账号完成')
 
 
-#
-@app.cli.command()
-def Article():
-    db.create_all()
-    name = "mrliu"
-    articles = [
-        {'title':'杀破狼','content':'2003','pubdate':'2000'},
-        {'title':'扫毒','year':'2018','pubdate':'2000'},
-        {'title':'捉妖记','year':'2016','pubdate':'2000'},
-        {'title':'囧妈','year':'2020','pubdate':'2000'},
-        {'title':'葫芦娃','year':'1989','pubdate':'2000'},
-        {'title':'玻璃盒子','year':'2020','pubdate':'2000'},
-        {'title':'调酒师','year':'2020','pubdate':'2000'},
-        {'title':'釜山行','year':'2017','pubdate':'2000'},
-        {'title':'导火索','year':'2005','pubdate':'2000'},
-        {'title':'叶问','year':'2015','pubdate':'2000'}
-    ]
-    user = User(name=name)
-    db.session.add(user)
-    for a in articles:
-        article = Ariticles(title=a['title'], content=a['year'],author='mrliu',pubdate=a['pubdate'])
-        db.session.add(article)
-    db.session.commit()
-    click.echo('数据导入完成')
